@@ -1,0 +1,1 @@
+web: java -jar target/leave-management-system-*.jar --server.port=$PORT

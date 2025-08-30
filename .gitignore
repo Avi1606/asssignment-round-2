@@ -1,0 +1,39 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Runtime
+*.pid
+*.seed
+*.seed.tmp
+
+# Environment variables
+.env
+.env.local
+.env.prod
+
+# H2 Database
+*.db
+*.mv.db
+*.trace.db
+
+# Application specific
+logs/
+uploads/

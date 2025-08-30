@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Leave Management System Application
+  leave-management-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lms-app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DATABASE_URL=jdbc:postgresql://postgres-db:5432/lmsdb
+      - DB_USERNAME=lmsuser
+      - DB_PASSWORD=lmspass123
+    depends_on:
+      - postgres-db
+    restart: unless-stopped
+    networks:
+      - lms-network
+
+  # PostgreSQL Database
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: lms-postgres
+    environment:
+      POSTGRES_DB: lmsdb
+      POSTGRES_USER: lmsuser
+      POSTGRES_PASSWORD: lmspass123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks:
+      - lms-network
+
+  # Redis for caching (optional for future enhancements)
+  redis-cache:
+    image: redis:7-alpine
+    container_name: lms-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - lms-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  lms-network:
+    driver: bridge
