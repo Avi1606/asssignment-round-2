@@ -1,0 +1,13 @@
+com/lms/model/LeaveTransaction.class
+com/lms/repository/LeaveTransactionRepository.class
+com/lms/model/LeaveRequest.class
+com/lms/model/LeaveType.class
+com/lms/model/Department.class
+com/lms/repository/DepartmentRepository.class
+com/lms/model/LeaveStatus.class
+com/lms/LeaveManagementSystemApplication.class
+com/lms/model/TransactionType.class
+com/lms/repository/LeaveRequestRepository.class
+com/lms/model/Employee.class
+com/lms/model/EmployeeRole.class
+com/lms/repository/EmployeeRepository.class
